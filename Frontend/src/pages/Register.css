@@ -1,0 +1,118 @@
+.authContainer {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #212121;
+}
+
+.authCard {
+  width: 350px;
+  max-width: 50%;
+
+  padding: 50px;
+  border-radius: 30px;
+
+  background: #2b2b2b;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.authTitle {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.authSubtitle {
+  color: #b4b4b4;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.authInput {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-size: 15px;
+}
+
+.authInput:focus {
+  outline: 2px solid #339cff;
+}
+
+.authButton {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 999px;
+  background: #339cff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-left:15px;
+}
+
+.authButton:hover {
+  transform: translateY(-2px);
+}
+
+.authDivider {
+  margin: 25px 0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.authDivider::before,
+.authDivider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+.authLink {
+  color: #339cff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 25px;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+}
+
+.authAltButton {
+  width: 100%;
+  padding: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+  
+}

@@ -1,0 +1,25 @@
+* {
+    color:#ececec;
+    font-family: Roboto, 'Open sans','Helvatica Neue', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin:0 ;
+    padding: 0;
+}
+
+.app {
+    background-color: #212121;
+    display:flex;
+    height:100%;
+}
+
+
+
+.app {
+  background-color: #212121;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
