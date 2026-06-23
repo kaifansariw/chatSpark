@@ -13,7 +13,17 @@ const UserSchema = new mongoose.Schema({
   password:{
     type:String,
     required:true
+  },
+  settings:{
+  lightMode:{
+    type:Boolean,
+    default:false
+  },
+  showHistory:{
+    type:Boolean,
+    default:true
   }
+}
 });
 
 export default mongoose.model("User", UserSchema);

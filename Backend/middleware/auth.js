@@ -13,7 +13,6 @@ const auth = (req, res, next) => {
   const token = authHeader.split(" ")[1];
 
   try {
-
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET
@@ -22,16 +21,14 @@ const auth = (req, res, next) => {
     req.user = decoded;
 
     next();
-
   } catch (error) {
+   console.log("JWT ERROR:", error);
 
-    return res.status(401).json({
-      error: "Invalid token"
-    });
-
-  }
+   return res.status(401).json({
+    error: error.message
+  });
+}
 };
 
 export default auth;
 
-console.log("auth.js loaded");

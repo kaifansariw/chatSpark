@@ -13,7 +13,7 @@ const getOpenAIAPIResponse = async(message) => {
       messages: [
         {
           role: "user",
-          content: message
+          content: message,
         }
       ]
     })

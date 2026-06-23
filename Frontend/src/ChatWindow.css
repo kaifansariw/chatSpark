@@ -1,5 +1,5 @@
 .chatWindow {
-  background-color:#212121;
+  background:#0F172A;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .userIcon{
-    background-color: #339cff;
+    background:linear-gradient(135deg, #6366F1,  #A855F7 );
     height:25px;
     width:25px;
     border-radius:50%;
@@ -42,59 +42,55 @@
     right:5px;
 }
 
-/* chat input */
+
 .chatInput{
     width:100%;
+    padding:20px;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
 }
 
 .inputBox{
-   width: 100%;
-   position:relative;
-   max-width:700px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   width:100%;
+   max-width:900px;
+   display:flex;
+   align-items:center;
+   background:#1E293B;
+   border:1px solid #334155;
+   border-radius:16px;
+   padding:0 12px;
 }
 
-input{
-    width:100%;
-    border:none;
-    background-color:rgba(255,255,255,0.05);
-    padding:20px;
-    font-size:0.8rem;
-    border-radius: 14px;
-    box-shadow: rgba( 0, 0, 0, 0.05) 0px 54px 55px,
-                rgba( 0, 0, 0, 0.05) 0px -12px 30px,
-                rgba( 0, 0, 0, 0.05) 0px -4px 6px,
-                rgba( 0, 0, 0, 0.05) 0px 12px 13px,
-                rgba( 0, 0, 0, 0.05) 0px -3px 5px;
-
+.inputBox input{
+   flex:1;
+   border:none;
+   outline:none;
+   background:transparent;
+   color:#E2E8F0;
+   padding:18px 12px;
+   font-size:15px;
+   box-shadow:none;
 }
 
-input:focus{
-    outline:none;
-}
 
 #submit{
-    cursor: pointer;
-    height: 35px;
-    width: 35px;
-    font-size: 20px;
-    position:absolute;
-    right: 15px;
-    display:flex;
-    align-items:center;
-    justify-content: center;
+   position:static;
+   width:42px;
+   height:42px;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   cursor:pointer;
+   color:#E2E8F0;
+   font-size:20px;
 }
 
 
 #submit i:hover{
-    color:#fff;
+      color:var(--secondary);
 }
+
 .info{ 
    font-size: 0.8rem;
    padding: 0.5rem;
@@ -111,7 +107,8 @@ input:focus{
     right: 4rem;
     width:150px;
 
-    background-color:#323232;
+    background:var(--tertiary);
+    border:1px solid var(--border);
     padding:0.3rem 0.5rem;
     border-radius:14px;
     text-align:left;
@@ -128,10 +125,8 @@ input:focus{
 
 
 .dropDownItem:hover{
-    background-color: rgba( 180, 180, 180, 0.1);
+     background:rgba(99,102,241,.15);
     border-radius: 6px;
 }
 
-.userName{
 
-}

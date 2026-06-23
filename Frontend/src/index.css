@@ -1,11 +1,23 @@
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+:root{
+  --primary:#6366F1;
+  --secondary:#A855F7;
+  --tertiary:#1E293B;
+  --neutral:#0F172A;
+
+  --text:#F8FAFC;
+  --text-secondary:#CBD5E1;
 }
 
-body {
-  background-color: #212121;
+html,
+body,
+#root{
+  width:100%;
+  height:100%;
+  margin:0;
+}
+
+body{
+  background:var(--neutral);
+  color:var(--text);
+  font-family:Inter,Segoe UI,sans-serif;
 }

@@ -1,0 +1,63 @@
+.settingsPage{
+    min-height:100vh;
+    background:#0F172A;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.settingsPage h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.settingsCard{
+    width:100%;
+    max-width:700px;
+    background:#1E293B;
+    border:1px solid #334155;
+    border-radius:20px;
+    padding:30px;
+}
+
+.settingItem{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.settingItem label{
+    font-size:16px;
+}
+
+.settingItem select{
+    background:#0F172A;
+    color:white;
+    border:1px solid #334155;
+    padding:10px;
+    border-radius:8px;
+}
+
+.saveBtn{
+    width:100%;
+    background:#6366F1;
+    border:none;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.saveBtn:hover{
+    background:#4F46E5;
+}
+
+.settingsWrapper{
+    width:100%;
+    max-width:700px;
+}

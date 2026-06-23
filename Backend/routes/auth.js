@@ -1,7 +1,9 @@
+console.log("auth.js loaded");
 import express from "express";
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -72,6 +74,40 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Login failed" });
   }
 });
+
+router.put("/settings", auth, async (req, res) => {
+  try {
+
+    const user = await User.findById(req.user.userId);
+     if (!user) {
+      return res.status(404).json({message: "User not found"});
+    } 
+    
+    user.settings = req.body;
+
+    await user.save();
+
+    res.json(user.settings);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to save settings" });
+  }
+});
+
+router.get("/settings", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({message: "User not found"});
+    } 
+    res.json(user.settings);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to load settings" });
+  }
+});
+
 
 
 export default router;

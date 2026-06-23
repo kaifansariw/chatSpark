@@ -42,7 +42,7 @@ function Register(){
   return(
     <div className="authContainer">
      <div className="authCard">
-      <h1 className="authTitle">Create Account</h1>
+      <h1 className="authTitle">Register</h1>
     <p className="authSubtitle"> Join ChatSpark today </p>
 
       <form onSubmit={handleRegister} className="authForm">

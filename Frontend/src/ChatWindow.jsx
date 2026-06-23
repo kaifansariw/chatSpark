@@ -3,23 +3,55 @@ import Chat from "./Chat.jsx";
 import { MyContext } from "./MyContex.jsx";
 import { useContext , useState , useEffect } from "react";
 import { ScaleLoader } from 'react-spinners';
+import { useNavigate } from "react-router-dom";
+import SettingsDrawer from "./SettingsDrawer.jsx";
+
 
 
 function ChatWindow(){
-   const { prompt,setPrompt,reply,setReply,currThreadId, prevChats ,setPrevChats,setNewChat } = useContext(MyContext);
+   const { 
+         prompt,
+         setPrompt,
+         reply,
+         setReply,
+         currThreadId,
+         prevChats ,
+         setPrevChats,
+         setNewChat,
+         showHistory,
+         setShowHistory 
+        } = useContext(MyContext);
    const [loading, setLoading] = useState(false);
    const [isOpen,setIsOpen] = useState(false);
-    const user = JSON.parse( localStorage.getItem("user"));
+   const user = JSON.parse( localStorage.getItem("user"));
+   const navigate = useNavigate(); 
+   const [showSettings, setShowSettings] = useState(false);
+   const [lightMode, setLightMode] = useState(false);
+   const [lastPrompt , setLastPrompt ] = useState(false);
 
+  const getReply = async () => {
 
- const getReply = async () => {
+  const CurrentPrompt = prompt;
+
+  setLastPrompt(CurrentPrompt);
+
+  setPrevChats((prev) => [
+    ...(prev || []),
+  {
+    role: "user",
+    content: CurrentPrompt,
+  },
+ ]);
+
+  setPrompt("");
  
   if (!prompt.trim()) return;
-
-  setLoading(true);
-  setNewChat(false);
+  
+    setLoading(true);
+    setNewChat(false);
  
   const token = localStorage.getItem("token");
+ 
   const options = {
     method: "POST",
     headers: {
@@ -27,22 +59,17 @@ function ChatWindow(){
        Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
-      message: prompt,
+      message: CurrentPrompt,
       threadId: currThreadId,
     }),
   };
    
   try {
-    console.log({
-    message: prompt,
-    threadId: currThreadId
-});
- 
+
     const response = await fetch( "http://localhost:8080/api/chat", options);
-    console.log("Status:", response.status);
+
     const data = await response.json();
    
-    console.log("Response Data:", data);
     setReply(data.reply);
 
   } catch (err) {
@@ -50,11 +77,11 @@ function ChatWindow(){
   } finally {
     setLoading(false);
   }
-};
+ };
 
 
 //Append new chat to previous Chats
- useEffect(() => {
+   useEffect(() => {
     
     const loadThread = async () => {
       try {
@@ -78,42 +105,125 @@ function ChatWindow(){
 
 
   useEffect(() => {
-  if (!reply) return;
+   if (!reply) return;
 
-  setPrevChats((prev) => [
+   setPrevChats((prev) => [
     ...prev,
-    { role: "user", content: prompt },
+    // { role: "user", content: prompt },
     { role: "assistant", content: reply },
   ]);
+    // setPrompt("");
+  }, [reply]);
 
-  setPrompt("");
-}, [reply]);
 
+   useEffect(() => {
+
+   const loadSettings = async () => {
+
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "http://localhost:8080/api/auth/settings",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      const settings = await response.json();
+
+      setLightMode(settings.lightMode ?? false);
+      setShowHistory(settings.showHistory ?? true);
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  };
+
+  loadSettings();
+
+  }, []);
+  
+   useEffect(() => {
+  if (lightMode) {
+    document.body.classList.add("light-mode");
+  } else {
+    document.body.classList.remove("light-mode");
+  }
+ }, [lightMode]);
+ 
+   const saveSettings = async () => {
+   try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      "http://localhost:8080/api/auth/settings",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          lightMode,
+          showHistory,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    setShowSettings(false);
+
+  } catch (err) {
+    console.log(err);
+  }
+   };
 
 return(
     <div className="chatWindow">
         <div className="navbar"> 
-            <span>ChatSpark <i className="fa-solid fa-chevron-down"></i></span>
+            <span>ChatSpark </span>
           <div className="userIconDiv" onClick={()=>setIsOpen(!isOpen)}>
              <span className="userName">Welcome {user?.name} </span>
              <span className="userIcon"><i className="fa-solid fa-user"></i></span>
            </div>
         </div>
-          {
-            isOpen && 
-            <div className="dropDown">
-              <div className="dropDownItem"> <i className="fa-solid fa-arrow-up-right-from-square"></i> Upgrade Plan</div>
-              <div className="dropDownItem"> <i className="fa-solid fa-gear"></i> Settings</div>
-              <div className="dropDownItem"  onClick={()=>{
-                  localStorage.removeItem("token");
-                  localStorage.removeItem("user");
-                 window.location.href="/login";
-                 }}>
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
-               Log out
-              </div>
-            </div>
-          }
+         {
+       isOpen &&
+     <div className="dropDown">
+
+      <div
+        className="dropDownItem"
+        onClick={() => {
+        setShowSettings(true);
+        setIsOpen(false);
+        }}>
+
+       <i className="fa-solid fa-gear"></i>
+        Settings
+      </div>
+
+     <div
+       className="dropDownItem"
+       onClick={() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login");
+      }}
+    >
+      <i className="fa-solid fa-arrow-right-from-bracket"></i>
+      Log out
+    </div>
+
+  </div>
+}
     <Chat/>
 
       <ScaleLoader color="#fff" loading={loading}>
@@ -137,6 +247,15 @@ return(
         </p>
         
    </div>
+   <SettingsDrawer
+    showSettings={showSettings}
+    setShowSettings={setShowSettings}
+    lightMode={lightMode}
+    setLightMode={setLightMode}
+    showHistory={showHistory}
+    setShowHistory={setShowHistory}
+    saveSettings={saveSettings}
+   />
  </div>
   )
 }

@@ -5,9 +5,11 @@ import { MyContext } from './MyContex.jsx';
 import { useState } from "react"; 
 import { v1 as uuidv1 } from 'uuid';
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
 
 function App() {
   const[prompt,setPrompt] = useState("");
@@ -17,6 +19,8 @@ function App() {
   const[newChat,setNewChat] = useState(true);
   const[allThreads,setAllThreads] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
+  const [showHistory, setShowHistory] = useState(true);
+  
   const token = localStorage.getItem("token");
 
 
@@ -28,16 +32,26 @@ function App() {
      prevChats,setPrevChats,
      allThreads,setAllThreads,
      isAuthenticated, setIsAuthenticated,
+     showHistory,setShowHistory,
    };
 
-   
+  useEffect(() => {
+  const settings = JSON.parse(localStorage.getItem("settings"));
+
+  if (settings?.lightMode) {
+    document.body.classList.add("light-theme");
+  } else {
+    document.body.classList.remove("light-theme");
+  }
+}, []);
+
   return (
     <div className="app">
      <MyContext.Provider value={providerValues}  >
       
     
       <Routes>
-
+            
       <Route path="/login" element = {  token ? <Navigate to="/" /> : <Login />}  />
 
       <Route path="/register" element = { token ? <Navigate to="/" /> : <Register />}/>

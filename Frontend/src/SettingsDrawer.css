@@ -1,0 +1,65 @@
+.settingsOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(6px);
+    z-index:999;
+}
+
+.settingsDrawer{
+    position:fixed;
+    top:0;
+    right:0;
+    width:380px;
+    height:100vh;
+    background:#1E293B;
+    padding:25px;
+    z-index:1000;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.3);
+    animation:slideIn .3s ease;
+}
+
+@keyframes slideIn{
+    from{
+        transform:translateX(100%);
+    }
+    to{
+        transform:translateX(0);
+    }
+}
+
+.drawerHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.drawerHeader h2{
+    margin:0;
+}
+
+.drawerHeader button{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.settingRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.saveBtn{
+    width:100%;
+    margin-top:30px;
+    background:#6366F1;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    cursor:pointer;
+}

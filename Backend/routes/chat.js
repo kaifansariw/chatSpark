@@ -35,6 +35,7 @@ router.get("/thread", auth , async (req, res) => {
     }));
 
     res.json(threadSummaries);
+    
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Failed to save in DB" });
@@ -43,6 +44,7 @@ router.get("/thread", auth , async (req, res) => {
 
 
 router.get('/thread/:threadId', auth , async(req,res)=>{
+
     const { threadId } = req.params;
    
     try{
@@ -62,13 +64,13 @@ router.get('/thread/:threadId', auth , async(req,res)=>{
 
 
 router.delete('/thread/:threadId',auth, async(req,res)=>{
-    const {threadId} = req.params;
+    const { threadId } = req.params;
     try{
         const deletedThread = await Thread.findOneAndDelete({threadId});
         if(!deletedThread){
             return res.status(404).json({error:"Thread not found"});
         }
-        return res.status(200).json({message:"Thread was created successfully"});
+        return res.status(200).json({message:"Thread was deleted successfully"});
         
     }catch(error){
        console.log(error);
@@ -79,9 +81,7 @@ router.delete('/thread/:threadId',auth, async(req,res)=>{
 
 router.post('/chat', auth , async(req,res)=>{
 
-    console.log("POST /chat hit");
-    console.log(req.body);
-    console.log("Body:", req.body);
+
     const {threadId,message} = req.body;
 
     try{
