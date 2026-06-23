@@ -24,12 +24,7 @@ display: none; /* Chrome/Safari */
 }
 
 .userMessage{
-    background:linear-gradient(
-      135deg,
-      rgba(99,102,241,.25),
-      rgba(168,85,247,.25)
-   );
-
+   background-color:rgba(99,102,241,.25);
    border:1px solid rgba(99,102,241,.2);
    padding: 10px 20px;
    border-radius: 14px;
