@@ -11,6 +11,12 @@ const auth = (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
+   
+  if (!token || token === "null") {
+    return res.status(401).json({
+      error: "Invalid token"
+    });
+  }
 
   try {
     const decoded = jwt.verify(
@@ -22,6 +28,7 @@ const auth = (req, res, next) => {
 
     next();
   } catch (error) {
+    
    console.log("JWT ERROR:", error);
 
    return res.status(401).json({
