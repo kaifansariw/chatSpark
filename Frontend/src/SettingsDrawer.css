@@ -1,22 +1,23 @@
-.settingsOverlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.4);
-    backdrop-filter:blur(6px);
-    z-index:999;
+.settingsOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 999;
 }
 
 .settingsDrawer{
-    position:fixed;
-    top:0;
+    position: fixed;
     right:0;
-    width:380px;
+    top:0;
+    padding:25px;
+    width:360px;
     height:100vh;
     background:#1E293B;
-    padding:25px;
+    color:#F8FAFC;
+    border-left:1px solid #334155;
     z-index:1000;
     box-shadow:-5px 0 20px rgba(0,0,0,0.3);
-    animation:slideIn .3s ease;
+    animation:slideIn 0.3s ease;
 }
 
 @keyframes slideIn{
@@ -62,4 +63,27 @@
     padding:14px;
     border-radius:10px;
     cursor:pointer;
+}
+
+body.light-mode .settingsDrawer{
+    background:#ffffff;
+    color:#0F172A;
+    border-left:1px solid #E2E8F0;
+}
+
+body.light-mode .settingsDrawer h2{
+    color:#0F172A;
+}
+
+body.light-mode .settingsDrawer label{
+    color:#334155;
+}
+
+body.light-mode .settingsDrawer button{
+    background:#3B82F6;
+    color:white;
+}
+
+body.light-mode .settingsDrawer input[type="checkbox"]{
+    accent-color:#3B82F6;
 }

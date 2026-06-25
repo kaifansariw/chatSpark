@@ -12,7 +12,7 @@ function Chat(){
   const [ latestReply , setLatestReply ] = useState(null);
   const chats = Array.isArray(prevChats) ? prevChats : [];
   const chatRef = useRef(null);
-
+  const bottomRef = useRef(null);
 
   useEffect(()=>{
     if(reply === null) {
@@ -47,14 +47,12 @@ function Chat(){
 
 
    
-   useEffect(() => {
-   if (chatRef.current) {
-     chatRef.current.scrollTo({
-      top: chatRef.current.scrollHeight,
-      behavior: "smooth"
-    });
-  }
+useEffect(() => {
+  bottomRef.current?.scrollIntoView({
+    behavior: "smooth"
+  });
 }, [prevChats, latestReply]);
+
 
 return(
     <>
@@ -117,6 +115,7 @@ return(
       
     );
    })}
+   <div ref={bottomRef}></div>
     </div>
   </>
 )

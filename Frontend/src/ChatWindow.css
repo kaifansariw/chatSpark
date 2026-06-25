@@ -10,7 +10,6 @@
 }
 
 
-/* navbar */
 .navbar{
   width: 100%;
   display:flex;
@@ -18,14 +17,13 @@
   align-items:center;
 }
 
+
 .navbar span{
     margin: 1rem 2rem;   
 }
 
 .userIconDiv{
-    margin: 1rem 2rem;
-      
-
+   margin: 1rem 2rem;
 }
 
 .userIcon{
@@ -39,7 +37,6 @@
     display: flex;
     cursor:pointer;
     position:relative;
-    right:5px;
 }
 
 
@@ -51,28 +48,33 @@
     align-items:center;
 }
 
+
 .inputBox{
-   width:100%;
-   max-width:900px;
-   display:flex;
-   align-items:center;
-   background:#1E293B;
-   border:1px solid #334155;
-   border-radius:16px;
-   padding:0 12px;
+   width: 100%;
+   max-width: 900px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   background: #1E293B;
+   border: 1px solid #334155;
+   border-radius: 16px;
+   padding: 0 16px;
+   flex-shrink: 0;
+   box-sizing: border-box;
 }
+
 
 .inputBox input{
    flex:1;
+   height:100%;
    border:none;
    outline:none;
    background:transparent;
    color:#E2E8F0;
    padding:18px 12px;
-   font-size:15px;
+   font-size: 15px;
    box-shadow:none;
 }
-
 
 #submit{
    position:static;
@@ -84,8 +86,9 @@
    cursor:pointer;
    color:#E2E8F0;
    font-size:20px;
-}
-
+   flex-shrink: 0;
+} 
+ 
 
 #submit i:hover{
       color:var(--secondary);
@@ -114,7 +117,8 @@
     text-align:left;
     z-index:1000;
     box-shadow:0px 2px 8px rgba(0,0,0,0.1);
-}
+} 
+
 
 .dropDownItem{
     font-size:0.8rem;
@@ -130,3 +134,10 @@
 }
 
 
+:root{
+    --chat-width:850px;
+}
+.chats{
+    max-width:var(--chat-width);
+    width:100%;
+}

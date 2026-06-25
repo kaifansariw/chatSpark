@@ -104,3 +104,19 @@ body.light-mode .dropDown {
   color: #0f172a;
   border: 1px solid #e2e8f0;
 }
+
+
+body.light-mode .welcomeCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+body.light-mode .welcomeCard h3 {
+  color: #0f172a;
+}
+
+body.light-mode .welcomeCard p {
+  color: #475569;
+}

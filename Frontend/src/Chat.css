@@ -1,16 +1,26 @@
+:root{
+    --chat-width:850px;
+}
+
 .chats{
-   max-width:700px;
-   overflow-y:auto;
-   padding:2rem 4rem;
-   display:flex;
-   flex-direction:column;
-   gap:20px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width:var(--chat-width);
+    margin: 0 auto;
+    padding: 30px 24px 140px;
+    box-sizing: border-box;
 }
 
 .chats::-webkit-scrollbar {
 display: none; /* Chrome/Safari */
 }
 
+.userDiv,.gptDiv {
+    width: 100%;
+}
 .userDiv{
    display:flex;
    justify-content:flex-end;
@@ -24,12 +34,11 @@ display: none; /* Chrome/Safari */
 }
 
 .userMessage{
-   background-color:rgba(99,102,241,.25);
-   border:1px solid rgba(99,102,241,.2);
-   padding: 10px 20px;
-   border-radius: 14px;
+   background: #2563eb;   border:1px solid rgba(99,102,241,.2);
+   padding: 14px 18px;
+   border-radius: 18px;
    margin-left: 15rem;
-   max-width: 500px;
+   max-width: 80%;
    width: fit-content;
 }
 
@@ -77,4 +86,32 @@ display: none; /* Chrome/Safari */
 .welcomeCard p{
    color:var(--text-secondary);
    line-height:1.6;
+}
+
+
+.welcomeCard{
+    background:#1E293B;
+    border:1px solid #334155;
+    color:#F8FAFC;
+    transition:.3s;
+}
+
+.welcomeCard h3{
+    color:#F8FAFC;
+}
+
+.welcomeCard p{
+    color:#CBD5E1;
+}
+
+
+/* This is used to overcome the overflow code in chatwindow */
+pre{
+    overflow-x:auto;
+    padding:18px;
+    border-radius:16px;
+}
+
+pre code{
+    white-space:pre;
 }

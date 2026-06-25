@@ -226,8 +226,7 @@ return(
 }
     <Chat/>
 
-      <ScaleLoader color="#fff" loading={loading}>
-
+<ScaleLoader color={lightMode ? "#0F172A" : "#F8FAFC"} loading={loading}>
       </ScaleLoader>
    <div className="chatInput">
      <div className="inputBox">
