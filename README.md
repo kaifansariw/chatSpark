@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../src/assets/chatSpark.png" width="220" alt="ChatSpark Logo"/>
+  <img src="chatSpark.png" width="220" alt="ChatSpark Logo"/>
 </p>
 
 <h1 align="center"> ChatSpark </h1>
