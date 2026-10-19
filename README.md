@@ -116,5 +116,5 @@ The ChatSpark frontend is deployed and accessible at: https://github.com/kaifans
                         ▼
                 ┌─────────────────┐
                 │    End User     │
-                │   ChatSpark UI  │
+                │   │
                 └─────────────────┘
